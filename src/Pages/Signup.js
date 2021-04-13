@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -10,11 +10,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Login = ({ goToSignup }) => {
+const Signup = () => {
   const classes = useStyles();
 
   return (
-    <LoginWrapper>
+    <SignupContainer>
+      <TextField
+        className={classes.margin}
+        id="input-with-icon-textfield"
+        label="User name"
+      />
       <TextField
         className={classes.margin}
         id="input-with-icon-textfield"
@@ -27,35 +32,19 @@ const Login = ({ goToSignup }) => {
         type="password"
       />
       <div>
-        <Button variant="outlined">Login</Button>
+        <Button variant="outlined">Create Account</Button>
       </div>
-      <SignupText>
-        Not a member? <strong onClick={goToSignup}>Signup now</strong>
-      </SignupText>
-    </LoginWrapper>
+    </SignupContainer>
   );
 };
 
-export default Login;
+export default Signup;
 
-const LoginWrapper = styled.div`
+const SignupContainer = styled.div`
   width: 100%;
   height: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
-
-const SignupText = styled.p`
-  color: #222222;
-
-  strong {
-    color: #609beb;
-    font-weight: 500;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
 `;
