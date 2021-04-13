@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { loginEmail, loginPassword } from "../actions";
 import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -13,14 +15,19 @@ const useStyles = makeStyles((theme) => ({
 const Login = ({ goToSignup }) => {
   const classes = useStyles();
 
+  const loginVal = useSelector((state) => state.loginReducer);
+  const dispatch = useDispatch();
+
   return (
     <LoginWrapper>
       <TextField
+        onChange={(evt) => dispatch(loginEmail(evt.target.value))}
         className={classes.margin}
         id="input-with-icon-textfield"
         label="Email"
       />
       <TextField
+        onChange={(evt) => dispatch(loginPassword(evt.target.value))}
         className={classes.margin}
         id="input-with-icon-textfield"
         label="Password"
