@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { loginEmail, loginPassword } from "../actions";
+import { loginEmail, loginPassword } from "../../../actions";
 import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Login = ({ goToSignup }) => {
+const Login = ({ goToSignup, loginHandler }) => {
   const classes = useStyles();
 
   const loginVal = useSelector((state) => state.loginReducer);
@@ -34,7 +34,9 @@ const Login = ({ goToSignup }) => {
         type="password"
       />
       <div>
-        <Button variant="outlined">Login</Button>
+        <Button onClick={loginHandler} variant="outlined">
+          Login
+        </Button>
       </div>
       <SignupText>
         Not a member? <strong onClick={goToSignup}>Signup now</strong>

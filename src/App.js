@@ -22,25 +22,6 @@ function App() {
     });
   }, []);
 
-  const login = () => {
-    firebaseApp
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then((user) => {
-        const uid = (firebaseApp.auth().currentUser || {}).uid;
-        if (uid) {
-          setLoginStatus(true);
-          setUid(uid);
-        } else {
-          alert("error");
-        }
-      })
-      .catch((error) => {
-        let errorCode = error.code;
-        let errorMessage = error.message;
-      });
-  };
-
   //chat을 db에 추가하는 함수
   const addDocument = (content) => {
     db.collection("caht")

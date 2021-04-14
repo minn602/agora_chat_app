@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import { signupEmail, signupName, signupPassword } from "../actions";
+import { signupEmail, signupName, signupPassword } from "../../../actions";
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Signup = () => {
+const Signup = ({ signupHandler }) => {
   const classes = useStyles();
 
   const signupVal = useSelector((state) => state.signupReducer);
@@ -40,7 +40,9 @@ const Signup = () => {
         type="password"
       />
       <div>
-        <Button variant="outlined">Create Account</Button>
+        <Button onClick={signupHandler} variant="outlined">
+          Create Account
+        </Button>
       </div>
     </SignupContainer>
   );
